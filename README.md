@@ -31,6 +31,6 @@ to use the same optimization flags throughout the project, so if you
 use a different level of optimization, you probably want to change the
 EMFLAGS variable and rebuild the libraries by executing *make all*.
 
-astroem is distributed under the terms of The MIT License.
+drvrem is distributed under the terms of The MIT License.
 
 Eric Mandel, Center for Astrophysics | Harvard & Smithsonian 
