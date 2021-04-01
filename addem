@@ -1,0 +1,105 @@
+#!/bin/bash
+
+# addem: add driver files and edit cfitsio files to set up emscripten driver
+
+# error handler: send to stderr (which will go to stdout for CGI)
+error() {
+  echo "ERROR: $*" >&2
+  exit 1
+}
+
+# which version of cfitsio
+CFITSIO="CFITSIO-3.49"
+if [ x"$1" != x ]; then
+  CFITSIO="$1"
+fi
+if [ ! -r $CFITSIO ]; then
+  error "$CFITSIO directory or link is missing"
+fi
+
+echo "adding drvrem files to $CFITSIO ..."
+
+# copy our driver files
+cp -p drvrem.c drvrem.h $CFITSIO/.
+
+# go into cfitsio to edit existing files
+cd $CFITSIO || error "cannot cd to $CFITSIO"
+
+# add driver to Makefile
+if [ -r Makefile.in-orig ]; then
+  mv Makefile.in-orig Makefile.in
+fi
+sed -i -orig 's/drvrnet\.c/drvrnet.c drvrem.c/' Makefile.in
+
+# add driver include file
+if [ -r fitsio2.h-orig ]; then
+  mv fitsio2.h-orig fitsio2.h
+fi
+sed -i -orig '/hack for nonunix machines, which lack strcasecmp and strncasecmp/i\
+#if __EMSCRIPTEN__\
+/* prototypes for emsripten driver I/O routines  */\
+#include "drvrem.h"\
+#endif\
+\
+' fitsio2.h
+
+# add driver registration calls
+if [ -r cfileio.c-orig ]; then
+  mv cfileio.c-orig cfileio.c
+fi
+sed -i -orig 's/#define MAX_DRIVERS 31/#define MAX_DRIVERS 33/;/Any other threads will now not need to call this routine/i\
+#if __EMSCRIPTEN__\
+\    /* 32------------ output emscripten https file driver ----------------*/\
+\    status = fits_register_driver("@https://",\
+\            em_init,\
+\            em_shutdown,\
+\            em_setoptions,\
+\            em_getoptions, \
+\            em_getversion,\
+\            NULL,            /* checkfile not required */\
+\            em_open_https,\
+\            NULL,            /* create function not required */\
+\            NULL,            /* truncate function not required */\
+\            em_close,\
+\            NULL,            /* remove function not required */\
+\            em_size,\
+\            NULL,            /* flush function not required */\
+\            em_seek,\
+\            em_read,\
+\            em_write);\
+\
+\    if (status)\
+\    {\
+\        ffpmsg("failed to register the @https:// driver (init_cfitsio)");\
+\        FFUNLOCK;\
+\        return(status);\
+\    }\
+\
+\    /* 33------------ output emscripten http file driver ----------------*/\
+\    status = fits_register_driver("@http://",\
+\            em_init,\
+\            em_shutdown,\
+\            em_setoptions,\
+\            em_getoptions, \
+\            em_getversion,\
+\            NULL,            /* checkfile not required */\
+\            em_open_http,\
+\            NULL,            /* create function not required */\
+\            NULL,            /* truncate function not required */\
+\            em_close,\
+\            NULL,            /* remove function not required */\
+\            em_size,\
+\            NULL,            /* flush function not required */\
+\            em_seek,\
+\            em_read,\
+\            em_write);\
+\
+\    if (status)\
+\    {\
+\        ffpmsg("failed to register the @http:// driver (init_cfitsio)");\
+\        FFUNLOCK;\
+\        return(status);\
+\    }\
+\#endif\
+\
+' cfileio.c

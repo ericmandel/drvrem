@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+    <input type="text" id="url" placeholder="url" value="https://js9.si.edu/js9/data/fits/m13.fits">
+    <input type="text" id="start" placeholder="start" value="0">
+    <input type="text" id="len" placeholder="len" value="5760">
+    <input type="button" value="Section" onclick="javascript:dosection()">
+    <input type="button" value="All" onclick="javascript:doall()">
+    <p>
+    <textarea id="output" rows="4" cols="80"></textarea>
+    <script>
+      worker = new Worker("fitsem_worker.js");
+      worker.onmessage = function(e) {
+	  obj = e.data;
+	  console.log(`postMessage receive: ${obj.len}`);
+	  document.getElementById('output').value = obj.len;
+      }
+      function dosection(){
+	  let url = document.getElementById('url').value;
+	  let start = parseInt(document.getElementById('start').value, 10);
+	  let len = parseInt(document.getElementById('len').value, 10);
+	  if( url ){
+	      console.log(`postMessage send: fitsem(${url}, section ${start}, ${len})`);
+	      worker.postMessage({url, start, len, mode: "section"});
+	  }
+      }
+      function doall(){
+	  let url = document.getElementById('url').value;
+	  if( url ){
+	      console.log(`postMessage send: fitsem(${url} all)`);
+	      worker.postMessage({url, mode: "all", start: 0, len: 0});
+	  }
+      }
+    </script>
+  </body>
+</html>

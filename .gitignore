@@ -1,0 +1,11 @@
+*~
+*.o
+*.so
+*.bak
+*.pyc
+*-orig
+*-sav
+foo*
+goo*
+a.out.dSYM/
+.DS_Store

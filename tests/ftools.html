@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+    <select id="menu" onchange="domenu(this)">
+      <option value="">choose a file</option>
+      <option value="snr.fits[EVENTS][PI==1&&PHA==2]">snr.fits</option>
+      <option value="casa.fits[EVENTS][PI==8&&PHA==23]">casa.fits</option>
+      <option value="m13.fits">m13.fits</option>
+    </select>
+    <input type="text" id="file" size="50" placeholder="file" value="">
+    <input type="button" value="Head" onclick="javascript:dohead()">
+    <input type="button" value="Struc" onclick="javascript:dostruc()">
+    <input type="button" value="Stats" onclick="javascript:dostats()">
+    <input type="button" value="TabList" onclick="javascript:dotablist()">
+    <p>
+    <textarea id="output" rows="32" cols="80"></textarea>
+    <script>
+      let url = "https://js9.si.edu/js9/data/fits";
+      let file = "snr.fits[EVENTS][PI==1&&PHA==2]";
+      // let file = "casa.fits[EVENTS][PI==8&&PHA==23]";
+      // let file = "m13.fits";
+      document.getElementById('file').value = `${file}`;
+      let worker = new Worker("ftools_worker.js");
+      worker.onmessage = function(e) {
+	  o = e.data;
+	  if( typeof o === "string" ){
+	      document.getElementById('output').value = o;
+	  } else if( typeof o === "object" ){
+	      document.getElementById('output').value = o.out;
+	      if( o.err ){ alert(`ERROR during ${o.cmd}: ${o.err}`); }
+	  }
+      }
+      function domenu(){
+	  let el = document.getElementById('menu')
+	  let val = el.value;
+	  if( val ){
+	      document.getElementById('file').value = val;
+	      el.selectedIndex = 0;
+	  }
+      }
+      function dohead(){
+	  let file = document.getElementById('file').value;
+	  if( file ){
+	      file = `@${url}/${file}`;
+	      console.log(`postMessage send: listhead(${file})`);
+	      worker.postMessage({cmd: "listhead", file: file});
+	  }
+      }
+      function dostruc(){
+	  let file = document.getElementById('file').value;
+	  if( file ){
+	      file = `@${url}/${file}`;
+	      console.log(`postMessage send: liststruc(${file})`);
+	      worker.postMessage({cmd: "liststruc", file: file});
+	  }
+      }
+      function dostats(){
+	  let file = document.getElementById('file').value;
+	  if( file ){
+	      file = `@${url}/${file}`;
+	      console.log(`postMessage send: imstat(${file})`);
+	      worker.postMessage({cmd: "imstat", file: file});
+	  }
+      }
+      function dotablist(){
+	  let file = document.getElementById('file').value;
+	  if( file ){
+	      file = `@${url}/${file}`;
+	      console.log(`postMessage send: tablist(${file})`);
+	      worker.postMessage({cmd: "tablist", file: file});
+	  }
+      }
+    </script>
+  </body>
+</html>
