@@ -1,6 +1,12 @@
 drvrem: cfitsio library with emscripten driver to access FITS files directly
 ----------------------------------------------------------------------------
 
+Status: works as advertised. But browsers don't allow async xhttp calls
+on the main thread, so the code must be run in a worker. Which would
+require major changes to JS9.
+
+----------------------------------------------------------------------------
+
 The experimental cfitsio library in this repository contains drivers
 to allow direct access to FITS files without downloading the entire
 file first. To access a FITS file directly, prepend "@" to the URL:
@@ -8,7 +14,7 @@ file first. To access a FITS file directly, prepend "@" to the URL:
 @https://js9.si.edu/js9/data/fits/m13.fits
 
 The cfitsio library has been compiled to byte-code using emscripten,
-and can be used only within the emsripten environment. The byte-code
+and can be used only within the emscripten environment. The byte-code
 files have .a extensions and are stored in the lib subdirectory.
 Include files have been copied to the include subdirectory.
 

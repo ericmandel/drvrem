@@ -3,8 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      input, select, textarea {
+	  font: normal 18px Arial;
+      }
+      .outer {
+	  position: absolute;
+	  left: 20px;
+	  top: 20px;
+      }
+    </style>
   </head>
   <body>
+    <div class="outer">
     <select id="menu" onchange="domenu(this)">
       <option value="">choose a file</option>
       <option value="snr.fits[EVENTS][PI==1&&PHA==2]">snr.fits</option>
@@ -17,7 +28,8 @@
     <input type="button" value="Stats" onclick="javascript:dostats()">
     <input type="button" value="TabList" onclick="javascript:dotablist()">
     <p>
-    <textarea id="output" rows="32" cols="80"></textarea>
+    <textarea id="output" rows="24" cols="120"></textarea>
+    </div>
     <script>
       let url = "https://js9.si.edu/js9/data/fits";
       let file = "snr.fits[EVENTS][PI==1&&PHA==2]";
@@ -26,11 +38,14 @@
       document.getElementById('file').value = `${file}`;
       let worker = new Worker("ftools_worker.js");
       worker.onmessage = function(e) {
+	  let v;
 	  o = e.data;
 	  if( typeof o === "string" ){
-	      document.getElementById('output').value = o;
+	      v = document.getElementById('output').value + "\n\n" + o;
+	      document.getElementById('output').value = v;
 	  } else if( typeof o === "object" ){
-	      document.getElementById('output').value = o.out;
+	      v = document.getElementById('output').value + "\n\n" + o.out;
+	      document.getElementById('output').value = v;
 	      if( o.err ){ alert(`ERROR during ${o.cmd}: ${o.err}`); }
 	  }
       }
@@ -43,34 +58,46 @@
 	  }
       }
       function dohead(){
+	  let s;
 	  let file = document.getElementById('file').value;
 	  if( file ){
 	      file = `@${url}/${file}`;
-	      console.log(`postMessage send: listhead(${file})`);
+	      s = `postMessage: listhead(${file})`;
+	      console.log(s);
+	      document.getElementById('output').value = s; 
 	      worker.postMessage({cmd: "listhead", file: file});
 	  }
       }
       function dostruc(){
+	  let s;
 	  let file = document.getElementById('file').value;
 	  if( file ){
 	      file = `@${url}/${file}`;
-	      console.log(`postMessage send: liststruc(${file})`);
+	      s = `postMessage: liststruc ${file}`;
+	      console.log(s);
+	      document.getElementById('output').value = s; 
 	      worker.postMessage({cmd: "liststruc", file: file});
 	  }
       }
       function dostats(){
+	  let s;
 	  let file = document.getElementById('file').value;
 	  if( file ){
 	      file = `@${url}/${file}`;
-	      console.log(`postMessage send: imstat(${file})`);
+	      s = `postMessage: imstat ${file}`;
+	      console.log(s);
+	      document.getElementById('output').value = s; 
 	      worker.postMessage({cmd: "imstat", file: file});
 	  }
       }
       function dotablist(){
+	  let s;
 	  let file = document.getElementById('file').value;
 	  if( file ){
 	      file = `@${url}/${file}`;
-	      console.log(`postMessage send: tablist(${file})`);
+	      s = `\npostMessage: tablist ${file}`;
+	      console.log(s);
+	      document.getElementById('output').value = s; 
 	      worker.postMessage({cmd: "tablist", file: file});
 	  }
       }

@@ -14,7 +14,7 @@ hostname = baba.local
 uname -m = x86_64
 uname -r = 19.6.0
 uname -s = Darwin
-uname -v = Darwin Kernel Version 19.6.0: Tue Jan 12 22:13:05 PST 2021; root:xnu-6153.141.16~1/RELEASE_X86_64
+uname -v = Darwin Kernel Version 19.6.0: Thu May  6 00:48:39 PDT 2021; root:xnu-6153.141.33~1/RELEASE_X86_64
 
 /usr/bin/uname -p = i386
 /bin/uname -X     = unknown
@@ -23,20 +23,20 @@ uname -v = Darwin Kernel Version 19.6.0: Tue Jan 12 22:13:05 PST 2021; root:xnu-
 /usr/bin/arch -k       = unknown
 /usr/convex/getsysinfo = unknown
 /usr/bin/hostinfo      = Mach kernel version:
-	 Darwin Kernel Version 19.6.0: Tue Jan 12 22:13:05 PST 2021; root:xnu-6153.141.16~1/RELEASE_X86_64
+	 Darwin Kernel Version 19.6.0: Thu May  6 00:48:39 PDT 2021; root:xnu-6153.141.33~1/RELEASE_X86_64
 Kernel configured for up to 8 processors.
 4 processors are physically available.
 8 processors are logically available.
 Processor type: x86_64h (Intel x86-64h Haswell)
 Processors active: 0 1 2 3 4 5 6 7
 Primary memory available: 16.00 gigabytes
-Default processor set: 474 tasks, 2298 threads, 8 processors
-Load average: 2.34, Mach factor: 5.64
+Default processor set: 434 tasks, 1867 threads, 8 processors
+Load average: 2.42, Mach factor: 5.57
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
-PATH: /Users/eric/emsdk/upstream/emscripten/system/bin
+PATH: /Users/eric/emsdk/upstream/emscripten/cache/sysroot/bin
 PATH: /Library/Frameworks/Python.framework/Versions/3.7/bin
 PATH: /usr/local/bin
 PATH: /Users/eric/emsdk
@@ -51,6 +51,8 @@ PATH: /usr/sbin
 PATH: /opt/X11/bin
 PATH: /Users/eric/miniconda3/bin
 PATH: /Users/eric/zhtools/bin
+PATH: /Users/eric/soft/Montage/bin
+PATH: /Users/eric/soft/wcstools-3.9.6/bin
 PATH: .
 
 
@@ -68,15 +70,15 @@ configure:2399: checking for gcc
 configure:2426: result: /Users/eric/emsdk/upstream/emscripten/emcc
 configure:2655: checking for C compiler version
 configure:2664: /Users/eric/emsdk/upstream/emscripten/emcc --version >&5
-emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 2.0.16 (52ed04f424ff0db7d8085c35df3afd7f7b1c9eb7)
+emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 2.0.23 (b15ca40ca02f469de3bf9a4de67a2655aede8974)
 Copyright (C) 2014 the Emscripten authors (see AUTHORS.txt)
 This is free and open source software under the MIT license.
 There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  
+
 configure:2675: $? = 0
 configure:2664: /Users/eric/emsdk/upstream/emscripten/emcc -v >&5
-emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 2.0.16
-clang version 13.0.0 (/opt/s/w/ir/cache/git/chromium.googlesource.com-external-github.com-llvm-llvm--project ad8010e598d9aa3747c34ce28aa2ba6de1650bd4)
+emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 2.0.23 (b15ca40ca02f469de3bf9a4de67a2655aede8974)
+clang version 13.0.0 (/opt/s/w/ir/cache/git/chromium.googlesource.com-external-github.com-llvm-llvm--project 5852582532b3eb3ea8da51a1e272d8d017bd36c9)
 Target: wasm32-unknown-emscripten
 Thread model: posix
 InstalledDir: /Users/eric/emsdk/upstream/bin
@@ -127,7 +129,7 @@ conftest.c:9:10: fatal error: 'ac_nonexistent.h' file not found
 #include <ac_nonexistent.h>
          ^~~~~~~~~~~~~~~~~~
 1 error generated.
-emcc: error: '/Users/eric/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -fignore-exceptions -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -D__EMSCRIPTEN_major__=2 -D__EMSCRIPTEN_minor__=0 -D__EMSCRIPTEN_tiny__=16 -D_LIBCPP_ABI_VERSION=2 -Dunix -D__unix -D__unix__ -flegacy-pass-manager -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/Users/eric/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -E conftest.c' failed (1)
+emcc: error: '/Users/eric/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -fignore-exceptions -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -D__EMSCRIPTEN_major__=2 -D__EMSCRIPTEN_minor__=0 -D__EMSCRIPTEN_tiny__=23 -D_LIBCPP_ABI_VERSION=2 -Dunix -D__unix -D__unix__ -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/Users/eric/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -E conftest.c' failed (returned 1)
 configure:3191: $? = 1
 configure: failed program was:
 | /* confdefs.h */
@@ -147,7 +149,7 @@ conftest.c:9:10: fatal error: 'ac_nonexistent.h' file not found
 #include <ac_nonexistent.h>
          ^~~~~~~~~~~~~~~~~~
 1 error generated.
-emcc: error: '/Users/eric/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -fignore-exceptions -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -D__EMSCRIPTEN_major__=2 -D__EMSCRIPTEN_minor__=0 -D__EMSCRIPTEN_tiny__=16 -D_LIBCPP_ABI_VERSION=2 -Dunix -D__unix -D__unix__ -flegacy-pass-manager -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/Users/eric/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -E conftest.c' failed (1)
+emcc: error: '/Users/eric/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -fignore-exceptions -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -D__EMSCRIPTEN_major__=2 -D__EMSCRIPTEN_minor__=0 -D__EMSCRIPTEN_tiny__=23 -D_LIBCPP_ABI_VERSION=2 -Dunix -D__unix -D__unix__ -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/Users/eric/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -E conftest.c' failed (returned 1)
 configure:3250: $? = 1
 configure: failed program was:
 | /* confdefs.h */
@@ -211,15 +213,15 @@ configure:3815: checking for gcc
 configure:3842: result: /Users/eric/emsdk/upstream/emscripten/emcc
 configure:4071: checking for C compiler version
 configure:4080: /Users/eric/emsdk/upstream/emscripten/emcc --version >&5
-emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 2.0.16 (52ed04f424ff0db7d8085c35df3afd7f7b1c9eb7)
+emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 2.0.23 (b15ca40ca02f469de3bf9a4de67a2655aede8974)
 Copyright (C) 2014 the Emscripten authors (see AUTHORS.txt)
 This is free and open source software under the MIT license.
 There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  
+
 configure:4091: $? = 0
 configure:4080: /Users/eric/emsdk/upstream/emscripten/emcc -v >&5
-emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 2.0.16
-clang version 13.0.0 (/opt/s/w/ir/cache/git/chromium.googlesource.com-external-github.com-llvm-llvm--project ad8010e598d9aa3747c34ce28aa2ba6de1650bd4)
+emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 2.0.23 (b15ca40ca02f469de3bf9a4de67a2655aede8974)
+clang version 13.0.0 (/opt/s/w/ir/cache/git/chromium.googlesource.com-external-github.com-llvm-llvm--project 5852582532b3eb3ea8da51a1e272d8d017bd36c9)
 Target: wasm32-unknown-emscripten
 Thread model: posix
 InstalledDir: /Users/eric/emsdk/upstream/bin
@@ -292,7 +294,7 @@ warning: _shmdt may need to be added to EXPORTED_FUNCTIONS if it arrives from a 
 error: undefined symbol: shmget (referenced by top-level compiled C/C++ code)
 warning: _shmget may need to be added to EXPORTED_FUNCTIONS if it arrives from a system library
 Error: Aborting compilation due to previous errors
-emcc: error: '/Users/eric/emsdk/node/14.15.5_64bit/bin/node /Users/eric/emsdk/upstream/emscripten/src/compiler.js /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/tmpzbba3ya_.txt' failed (1)
+emcc: error: '/Users/eric/emsdk/node/14.15.5_64bit/bin/node /Users/eric/emsdk/upstream/emscripten/src/compiler.js /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/tmpi_p36zpj.txt' failed (returned 1)
 configure:5075: $? = 1
 configure: failed program was:
 | /* confdefs.h */
@@ -349,7 +351,7 @@ conftest.c:34:1: error: use of undeclared identifier 'flock_t'
 flock_t filler;
 ^
 1 warning and 1 error generated.
-emcc: error: '/Users/eric/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -fignore-exceptions -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -D__EMSCRIPTEN_major__=2 -D__EMSCRIPTEN_minor__=0 -D__EMSCRIPTEN_tiny__=16 -D_LIBCPP_ABI_VERSION=2 -Dunix -D__unix -D__unix__ -flegacy-pass-manager -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/Users/eric/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -c -g -O2 -fPIC -fno-common conftest.c -o conftest.o' failed (1)
+emcc: error: '/Users/eric/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -fignore-exceptions -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -D__EMSCRIPTEN_major__=2 -D__EMSCRIPTEN_minor__=0 -D__EMSCRIPTEN_tiny__=23 -D_LIBCPP_ABI_VERSION=2 -Dunix -D__unix -D__unix__ -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/Users/eric/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -c -g -O2 -fPIC -fno-common conftest.c -o conftest.o' failed (returned 1)
 configure:5112: $? = 1
 configure: failed program was:
 | /* confdefs.h */
@@ -397,7 +399,7 @@ conftest.c:28:10: fatal error: 'sys/flock.h' file not found
 #include <sys/flock.h>
          ^~~~~~~~~~~~~
 1 error generated.
-emcc: error: '/Users/eric/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -fignore-exceptions -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -D__EMSCRIPTEN_major__=2 -D__EMSCRIPTEN_minor__=0 -D__EMSCRIPTEN_tiny__=16 -D_LIBCPP_ABI_VERSION=2 -Dunix -D__unix -D__unix__ -flegacy-pass-manager -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/Users/eric/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -c -g -O2 -fPIC -fno-common conftest.c -o conftest.o' failed (1)
+emcc: error: '/Users/eric/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -fignore-exceptions -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -D__EMSCRIPTEN_major__=2 -D__EMSCRIPTEN_minor__=0 -D__EMSCRIPTEN_tiny__=23 -D_LIBCPP_ABI_VERSION=2 -Dunix -D__unix -D__unix__ -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/Users/eric/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -c -g -O2 -fPIC -fno-common conftest.c -o conftest.o' failed (returned 1)
 configure:5142: $? = 1
 configure: failed program was:
 | /* confdefs.h */
@@ -448,7 +450,7 @@ conftest.c:36:7: note: forward declaration of 'union semun'
 union semun filler;
       ^
 1 error generated.
-emcc: error: '/Users/eric/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -fignore-exceptions -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -D__EMSCRIPTEN_major__=2 -D__EMSCRIPTEN_minor__=0 -D__EMSCRIPTEN_tiny__=16 -D_LIBCPP_ABI_VERSION=2 -Dunix -D__unix -D__unix__ -flegacy-pass-manager -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/Users/eric/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -c -g -O2 -fPIC -fno-common conftest.c -o conftest.o' failed (1)
+emcc: error: '/Users/eric/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -fignore-exceptions -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -D__EMSCRIPTEN_major__=2 -D__EMSCRIPTEN_minor__=0 -D__EMSCRIPTEN_tiny__=23 -D_LIBCPP_ABI_VERSION=2 -Dunix -D__unix -D__unix__ -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/Users/eric/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -c -g -O2 -fPIC -fno-common conftest.c -o conftest.o' failed (returned 1)
 configure:5236: $? = 1
 configure: failed program was:
 | /* confdefs.h */
@@ -495,7 +497,7 @@ configure:5244: result: no
 configure:5253: checking for fmemopen
 configure:5253: /Users/eric/emsdk/upstream/emscripten/emcc -o conftest -g -O2  -fPIC -fno-common  -g -O2 conftest.c  >&5
 wasm-ld: warning: function signature mismatch: fmemopen
->>> defined as () -> i32 in /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/emscripten_temp_99097hw9/conftest_0.o
+>>> defined as () -> i32 in /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/emscripten_temp_l_o1gigi/conftest_0.o
 >>> defined as (i32, i32, i32) -> i32 in /Users/eric/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libc.a(fmemopen.o)
 configure:5253: $? = 0
 configure:5253: result: yes
@@ -506,7 +508,7 @@ configure:5314: result: none required
 configure:5324: checking for library containing connect
 configure:5355: /Users/eric/emsdk/upstream/emscripten/emcc -o conftest -g -O2  -fPIC -fno-common  -g -O2 conftest.c  >&5
 wasm-ld: warning: function signature mismatch: connect
->>> defined as () -> i32 in /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/emscripten_temp_in8gopli/conftest_0.o
+>>> defined as () -> i32 in /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/emscripten_temp_pzfz0w9l/conftest_0.o
 >>> defined as (i32, i32, i32) -> i32 in /Users/eric/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libsockets.a(connect.o)
 configure:5355: $? = 0
 configure:5372: result: none required
@@ -629,7 +631,7 @@ EGREP='/usr/bin/grep -E'
 EXEEXT=''
 F77_WRAPPERS=''
 FC=''
-GCCVERSION='2.0.16'
+GCCVERSION='2.0.23'
 GREP='/usr/bin/grep'
 GSIFTP_SRC=''
 INSTALL_ROOT='${prefix}'
