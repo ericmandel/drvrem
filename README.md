@@ -20,6 +20,11 @@ To access a FITS file directly, prepend "@" to the URL:
 
 @https://js9.si.edu/js9/data/fits/m13.fits
 
+NB: CORS must be respected, meaning that, in general, you can only access
+FITS files from the same domain as the web page.
+
+----------------------------------------------------------------------------
+
 The v4.0.0 cfitsio library has been compiled to byte-code using emscripten,
 and can be used only within the emscripten environment. The byte-code
 files have .a extensions and are stored in the lib subdirectory.
