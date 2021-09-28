@@ -1,5 +1,5 @@
 # cfitsio build copied from astroem
-CFITSIO 	= ./cfitsio-3.49
+CFITSIO 	= ./cfitsio-4.0.0
 CFITSIO_CFLAGS	= $(EMFLAGS) -fno-common -D__x86_64__
 
 guard:		FORCE
@@ -17,7 +17,7 @@ cfitsio:	FORCE
 	        cp -p *.h $${CDIR}/include;)
 
 ftools:		FORCE
-		@(cd tests && make ftools)
+		@(cd tests && make ftools && make tar)
 
 clean:		FORCE
 		@(rm -rf *~ *.o foo* *.dSYM; \

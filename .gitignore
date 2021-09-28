@@ -3,9 +3,9 @@
 *.so
 *.bak
 *.pyc
-*-orig
 *-sav
 foo*
 goo*
+ftools.tar.gz
 a.out.dSYM/
 .DS_Store

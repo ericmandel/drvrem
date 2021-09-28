@@ -2,6 +2,11 @@ self.importScripts("ftools.js");
 
 self.onmessage = function(e) {
     let obj = e.data;
+    // check if runtime is ready yet
+    if( !Module["ready"] ){
+	postMessage({cmd: "readycheck", out: "", err: "runtime is not ready"});
+	return;
+    }
     // C printf function is redefined to add to this buffer
     Module["outbuf"] = "";
     Module["errbuf"] = "";

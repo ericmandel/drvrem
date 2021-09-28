@@ -1,0 +1,51 @@
+buffers.c:        if ( (LONGLONG) (fptr->Fptr)->bufrecnum[ii] * IOBUFLEN >= fptr->Fptr->filesize)
+buffers.c:    if (!(Fptr->writemode) )
+buffers.c:        if (Fptr->driver == 8) {  /* gzip compressed file */
+buffers.c:        Fptr->dirty[nbuff] = FALSE;  /* reset buffer status to prevent later probs */
+buffers.c:    filepos = (LONGLONG)Fptr->bufrecnum[nbuff] * IOBUFLEN;
+buffers.c:    if (filepos <= Fptr->filesize)
+buffers.c:      if (Fptr->io_pos != filepos)
+buffers.c:      ffwrite(Fptr, IOBUFLEN, Fptr->iobuffer + (nbuff * IOBUFLEN), status);
+buffers.c:      Fptr->io_pos = filepos + IOBUFLEN;
+buffers.c:      if (filepos == Fptr->filesize)   /* appended new record? */
+buffers.c:         Fptr->filesize += IOBUFLEN;   /* increment the file size */
+buffers.c:      Fptr->dirty[nbuff] = FALSE;
+buffers.c:      if (Fptr->io_pos != Fptr->filesize)
+buffers.c:         ffseek(Fptr, Fptr->filesize);
+buffers.c:        minrec = (long) (Fptr->filesize / IOBUFLEN);
+buffers.c:        irec = Fptr->bufrecnum[nbuff]; /* initially point to the requested buffer */
+buffers.c:          if (Fptr->bufrecnum[ii] >= minrec &&
+buffers.c:            Fptr->bufrecnum[ii] < irec)
+buffers.c:            irec = Fptr->bufrecnum[ii];  /* found a lower record */
+buffers.c:        if (filepos > Fptr->filesize)
+buffers.c:          nloop = (long) ((filepos - (Fptr->filesize)) / IOBUFLEN); 
+buffers.c:          Fptr->filesize = filepos;   /* increment the file size */
+buffers.c:        ffwrite(Fptr, IOBUFLEN, Fptr->iobuffer + (ibuff * IOBUFLEN), status);
+buffers.c:        Fptr->dirty[ibuff] = FALSE;
+buffers.c:        Fptr->filesize += IOBUFLEN;     /* increment the file size */
+buffers.c:      Fptr->io_pos = Fptr->filesize;  /* currently positioned at EOF */
+cfileio.c:          if (oldFptr->noextsyntax)
+cfileio.c:               /* compare tmpinfile to adjusted oldFptr->filename */
+cfileio.c:               if (strlen(oldFptr->filename) > FLEN_FILENAME-1)        
+cfileio.c:               strcpy(oldinfile, oldFptr->filename);
+cfileio.c:                     if (mode == READWRITE && oldFptr->writemode == READONLY)
+cfileio.c:             fits_parse_input_url(oldFptr->filename, oldurltype, 
+cfileio.c:               ffpmsg(oldFptr->filename);
+cfileio.c:                     if (mode == READWRITE && oldFptr->writemode == READONLY)
+cfileio.c:  strcpy(urlType, driverTable[fptr->Fptr->driver].prefix);
+editcol.c:    inVarCols = malloc(infptr->Fptr->tfield*sizeof(int));
+editcol.c:    outVarCols = malloc(outfptr->Fptr->tfield*sizeof(int));
+group.c:      fits_parse_rootname(tmpfptr->Fptr->filename, tmprootname, status);
+group.c:      fits_parse_rootname(gfptr->Fptr->filename, grootname, status);
+group.c:	  fits_parse_rootname(tmpfptr->Fptr->filename, tmprootname, status);
+group.c:	  fits_parse_rootname(gfptr->Fptr->filename, grootname, status);
+group.c:	  fits_parse_rootname(tmpfptr->Fptr->filename, tmprootname, status);
+group.c:	  fits_parse_rootname(gfptr->Fptr->filename, grootname, status);
+group.c:      fits_parse_rootname(tmpfptr->Fptr->filename, tmprootname, status);
+group.c:      fits_parse_rootname(gfptr->Fptr->filename, grootname, status);
+group.c:	      fits_parse_rootname(mfptr->Fptr->filename, mrootname, status);
+group.c:	      fits_parse_rootname(gfptr->Fptr->filename, grootname, status);
+imcompress.c:    memcpy(actual_tilesize, outfptr->Fptr->request_tilesize, MAX_COMPRESS_DIM * sizeof(long));
+imcompress.c:       call to ffcrtb will increment Fptr->curhdu to 1.  Therefore
+imcompress.c:    is_primary = (outfptr->Fptr->curhdu == 0);
+imcompress.c:    if ((infptr->Fptr->zbitpix < 0) &&

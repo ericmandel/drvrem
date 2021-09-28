@@ -15,3 +15,7 @@ Module["printErr"] = function(text) {
     console.log(text);
     Module["errbuf"] += text + "\n";
 };
+Module['onRuntimeInitialized'] = () => {
+    console.log("runtime is ready!");
+    Module['ready'] = true;
+}

@@ -9,7 +9,7 @@ error() {
 }
 
 # which version of cfitsio
-CFITSIO="CFITSIO-3.49"
+CFITSIO="cfitsio-4.0.0"
 if [ x"$1" != x ]; then
   CFITSIO="$1"
 fi
