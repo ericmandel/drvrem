@@ -1290,7 +1290,7 @@ int compress2file_from_mem(
 #endif
 
 #if __EMSCRIPTEN__
-/* prototypes for emsripten driver I/O routines  */
+/* prototypes for emscripten driver I/O routines  */
 #include "drvrem.h"
 #endif
 

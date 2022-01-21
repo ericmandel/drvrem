@@ -26,7 +26,7 @@ CFITSIO_MINOR	= 0
 CFITSIO_MICRO   = 0
 CFITSIO_SONAME	= 9
 
-prefix		= /Users/eric/rand/drvrem/cfitsio-4.0.0
+prefix		= /Users/eric/drvrem/cfitsio-4.0.0
 exec_prefix	= ${prefix}
 CFITSIO_BIN	= ${DESTDIR}${exec_prefix}/bin
 CFITSIO_LIB	= ${DESTDIR}${exec_prefix}/lib

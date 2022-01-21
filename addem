@@ -37,7 +37,7 @@ if [ -r fitsio2.h-orig ]; then
 fi
 sed -i -orig '/hack for nonunix machines, which lack strcasecmp and strncasecmp/i\
 #if __EMSCRIPTEN__\
-/* prototypes for emsripten driver I/O routines  */\
+/* prototypes for emscripten driver I/O routines  */\
 #include "drvrem.h"\
 #endif\
 \

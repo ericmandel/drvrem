@@ -1,4 +1,4 @@
-prefix=/Users/eric/rand/drvrem/cfitsio-4.0.0
+prefix=/Users/eric/drvrem/cfitsio-4.0.0
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
