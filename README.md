@@ -30,7 +30,7 @@ and can be used only within the emscripten environment. The byte-code
 files have .a extensions and are stored in the lib subdirectory.
 Include files have been copied to the include subdirectory.
 
-current emcc compiler: 2.0.29
+current emcc compiler: 3.1.1
 
 An emscripten-enabled project such as JS9 can copy the contents of the
 lib and include sub-directories into their own work space and then
