@@ -16,12 +16,6 @@ CC =		emcc $(EMFLAGS) -I../include
 
 all:	ftools
 
-# zlib
-ZEXTRA =	./zextra
-ZSRCS =		$(ZEXTRA)/zcompress.c \
-		$(ZEXTRA)/zuncompress.c
-ZOBJS = 	$(ZSRCS:%.c=%.o)
-
 # replacement technique: make a library using emar:
 # https://github.com/emscripten-core/emscripten/issues/12382
 SRCS =  	liststruc.c listhead.c imstat.c tablist.c
@@ -30,7 +24,7 @@ OBJS =		$(SRCS:%.c=%.o)
 INCS = 	-I ./include
 LIBS =	libftools.a ../lib/libcfitsio.a
 
-libftools.a:	$(OBJS) $(ZOBJS)
+libftools.a:	$(OBJS)
 		emar rcs $@ $?
 
 ftools:	libftools.a

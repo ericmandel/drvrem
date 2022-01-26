@@ -1,6 +1,7 @@
 # cfitsio build copied from astroem
 CFITSIO 	= ./cfitsio-4.0.0
 CFITSIO_CFLAGS	= $(EMFLAGS) -fno-common -D__x86_64__
+ZEXTRA		= ../zextra
 
 guard:		FORCE
 		@(echo "use 'make cfitsio' to build new cfitsio library")
@@ -12,7 +13,7 @@ cfitsio:	FORCE
 		echo "building $(CFITSIO) ..."; \
 		FC=none emconfigure ./configure;   \
 		sed -i -orig 's/ \-DCFITSIO_HAVE_CURL=1//;s/ \-DHAVE_NET_SERVICES=1//' Makefile;     \
-		emmake make ZLIB_SOURCES="" CFLAGS="$(CFITSIO_CFLAGS)" clean libcfitsio.a "FITSIO_SRC=";      \
+		emmake make CFLAGS="$(CFITSIO_CFLAGS)" clean libcfitsio.a "FITSIO_SRC=";      \
 		cp -p libcfitsio.a $${CDIR}/lib;   \
 	        cp -p *.h $${CDIR}/include;)
 

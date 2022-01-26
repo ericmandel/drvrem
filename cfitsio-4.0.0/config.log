@@ -30,14 +30,13 @@ Kernel configured for up to 8 processors.
 Processor type: x86_64h (Intel x86-64h Haswell)
 Processors active: 0 1 2 3 4 5 6 7
 Primary memory available: 16.00 gigabytes
-Default processor set: 613 tasks, 2280 threads, 8 processors
-Load average: 2.13, Mach factor: 5.86
+Default processor set: 486 tasks, 1997 threads, 8 processors
+Load average: 1.43, Mach factor: 6.56
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
 PATH: /Users/eric/emsdk/upstream/emscripten/cache/sysroot/bin
-PATH: /Users/eric/fable/cctbx-dev-2406/build/bin
 PATH: /Library/Frameworks/Python.framework/Versions/3.7/bin
 PATH: /usr/local/bin
 PATH: /Users/eric/emsdk
@@ -275,7 +274,7 @@ configure:4924: result: curl-config
 configure:4966: checking for inflateEnd in -lz
 configure:4991: /Users/eric/emsdk/upstream/emscripten/emcc -o conftest -g -O2  -fPIC -fno-common  -g -O2 conftest.c -lz   >&5
 wasm-ld: warning: function signature mismatch: inflateEnd
->>> defined as () -> i32 in /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/emscripten_temp_o8rnzwzo/conftest_0.o
+>>> defined as () -> i32 in /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/emscripten_temp_j66d87ex/conftest_0.o
 >>> defined as (i32) -> i32 in /Users/eric/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libz.a(inflate.c.o)
 configure:4991: $? = 0
 configure:5000: result: yes
@@ -300,7 +299,7 @@ warning: _shmdt may need to be added to EXPORTED_FUNCTIONS if it arrives from a 
 error: undefined symbol: shmget (referenced by top-level compiled C/C++ code)
 warning: _shmget may need to be added to EXPORTED_FUNCTIONS if it arrives from a system library
 Error: Aborting compilation due to previous errors
-emcc: error: '/Users/eric/emsdk/node/14.18.2_64bit/bin/node /Users/eric/emsdk/upstream/emscripten/src/compiler.js /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/tmp6tkhrtnd.json' failed (returned 1)
+emcc: error: '/Users/eric/emsdk/node/14.18.2_64bit/bin/node /Users/eric/emsdk/upstream/emscripten/src/compiler.js /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/tmp98uqybqg.json' failed (returned 1)
 configure:5127: $? = 1
 configure: failed program was:
 | /* confdefs.h */
@@ -507,7 +506,7 @@ configure:5296: result: no
 configure:5305: checking for fmemopen
 configure:5305: /Users/eric/emsdk/upstream/emscripten/emcc -o conftest -g -O2  -fPIC -fno-common  -g -O2 conftest.c -lz  >&5
 wasm-ld: warning: function signature mismatch: fmemopen
->>> defined as () -> i32 in /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/emscripten_temp_818dcgrg/conftest_0.o
+>>> defined as () -> i32 in /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/emscripten_temp_d4j9kxv8/conftest_0.o
 >>> defined as (i32, i32, i32) -> i32 in /Users/eric/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libc.a(fmemopen.o)
 configure:5305: $? = 0
 configure:5305: result: yes
@@ -518,7 +517,7 @@ configure:5366: result: none required
 configure:5376: checking for library containing connect
 configure:5407: /Users/eric/emsdk/upstream/emscripten/emcc -o conftest -g -O2  -fPIC -fno-common  -g -O2 conftest.c -lz  >&5
 wasm-ld: warning: function signature mismatch: connect
->>> defined as () -> i32 in /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/emscripten_temp_ecrjd3sp/conftest_0.o
+>>> defined as () -> i32 in /var/folders/hl/0rxttnz48xldqq006s7f7t980000gp/T/emscripten_temp_6qs6k25p/conftest_0.o
 >>> defined as (i32, i32, i32) -> i32 in /Users/eric/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libsockets.a(connect.o)
 configure:5407: $? = 0
 configure:5424: result: none required
